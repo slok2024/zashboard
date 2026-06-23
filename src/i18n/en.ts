@@ -10,13 +10,11 @@ const en = {
   tailscale: 'Tailscale',
   terminal: 'Terminal',
 
-  // sing-box native API attachment
+  // Backend type
   default: 'Default',
-  singboxApiChannel: 'sing-box API',
-  clashApiChannel: 'Clash API',
-  enableSingboxApi: 'Enable sing-box native API',
-  enableSingboxApiTip:
-    'The Clash API remains the primary connection. Add the native API only for sing-box-specific tools, Tailscale, and terminal features.',
+  backendType: 'Backend Type',
+  clashApi: 'Clash API',
+  singboxApi: 'sing-box API',
   singboxConnectionFailed: 'Failed to connect to the sing-box native API',
   skip: 'Skip',
   // Tools page
@@ -147,6 +145,13 @@ const en = {
   destination: 'Resolved address',
   destinationType: 'Resolved type',
   inboundUser: 'Inbound user',
+  outboundType: 'Outbound type',
+  fromOutbound: 'From outbound',
+  basic: 'Basic',
+  traffic: 'Traffic',
+  sourceAndDestination: 'Source & destination',
+  rawData: 'Raw',
+  geoInfo: 'GeoIP',
   dl: 'DL',
   ul: 'UL',
   dlSpeed: 'DL speed',
@@ -431,6 +436,8 @@ const en = {
   showAllPreset: 'Show all',
   minimalPreset: 'Minimal view',
   settingsPageTwoColumns: 'Two column layout',
+  moveUp: 'Move up',
+  moveDown: 'Move down',
   aggregateBy: 'Aggregate by',
   aggregateBySourceIP: 'By source IP',
   aggregateByDestination: 'By destination',

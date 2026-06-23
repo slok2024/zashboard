@@ -12,13 +12,11 @@ const zh: LANG_MESSAGE = {
   tailscale: 'Tailscale',
   terminal: '终端',
 
-  // sing-box 原生 API 附属通道
+  // 后端类型
   default: '默认',
-  singboxApiChannel: 'sing-box API',
-  clashApiChannel: 'Clash API',
-  enableSingboxApi: '启用 sing-box 原生 API',
-  enableSingboxApiTip:
-    'Clash API 始终作为主连接。原生 API 仅用于 sing-box 特有的工具、Tailscale 和终端能力。',
+  backendType: '后端类型',
+  clashApi: 'Clash API',
+  singboxApi: 'sing-box API',
   singboxConnectionFailed: '无法连接 sing-box 原生 API',
   skip: '跳过',
   // 工具页
@@ -149,6 +147,13 @@ const zh: LANG_MESSAGE = {
   destination: '解析地址',
   destinationType: '解析类型',
   inboundUser: '入站用户',
+  outboundType: '出站类型',
+  fromOutbound: '来源出站',
+  basic: '基本',
+  traffic: '流量',
+  sourceAndDestination: '来源与目的',
+  rawData: '原始数据',
+  geoInfo: '归属信息',
   dl: '下载',
   ul: '上传',
   dlSpeed: '下载速度',
@@ -425,6 +430,8 @@ const zh: LANG_MESSAGE = {
   showAllPreset: '全部显示',
   minimalPreset: '精简显示',
   settingsPageTwoColumns: '双列布局',
+  moveUp: '上移',
+  moveDown: '下移',
   aggregateBy: '聚合方式',
   aggregateBySourceIP: '按源IP',
   aggregateByDestination: '按目标地址',

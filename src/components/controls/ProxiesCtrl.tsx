@@ -1,11 +1,5 @@
-import { disconnectByIdAPI, isSingBox, updateProxyProviderAPI } from '@/api'
-import { renderProxiesPageItems } from '@/composables/proxies'
-import { isProxyNodeSearchMode, toggleProxySearchMode } from '@/composables/proxySearch'
-import { useCtrlsBar } from '@/composables/useCtrlsBar'
-import { PROXY_SORT_TYPE, PROXY_TAB_TYPE, ROUTE_NAME, SETTINGS_MENU_KEY } from '@/constant'
-import { getMinCardWidth } from '@/helper/utils'
-import { configs, updateConfigs } from '@/store/config'
-import { activeConnections } from '@/store/connections'
+import { configs, updateConfigs } from '@/assembly/config'
+import { disconnectByIdAPI } from '@/assembly/connections'
 import {
   allProxiesLatencyTest,
   fetchProxies,
@@ -14,7 +8,15 @@ import {
   proxiesTabShow,
   proxyGroupList,
   proxyProviederList,
-} from '@/store/proxies'
+  updateProxyProviderAPI,
+} from '@/assembly/proxies'
+import { isSingBoxCore } from '@/assembly/version'
+import { renderProxiesPageItems } from '@/composables/proxies'
+import { isProxyNodeSearchMode, toggleProxySearchMode } from '@/composables/proxySearch'
+import { useCtrlsBar } from '@/composables/useCtrlsBar'
+import { PROXY_SORT_TYPE, PROXY_TAB_TYPE, ROUTE_NAME, SETTINGS_MENU_KEY } from '@/constant'
+import { getMinCardWidth } from '@/helper/utils'
+import { activeConnections } from '@/store/connections'
 import {
   automaticDisconnection,
   collapseGroupMap,
@@ -44,6 +46,7 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import CtrlsBar from '../common/CtrlsBar.vue'
 import DialogWrapper from '../common/DialogWrapper.vue'
+import SegmentedControl from '../common/SegmentedControl.vue'
 import TextInput from '../common/TextInput.vue'
 
 export default defineComponent({
@@ -85,7 +88,7 @@ export default defineComponent({
     const handlerModeChange = (e: Event) => {
       const mode = (e.target as HTMLSelectElement).value
       updateConfigs({ mode })
-      if (isSingBox.value && automaticDisconnection.value) {
+      if (isSingBoxCore.value && automaticDisconnection.value) {
         activeConnections.value.forEach((connection) => {
           if (connection.rule.includes('clash_mode')) {
             disconnectByIdAPI(connection.id)
@@ -132,23 +135,15 @@ export default defineComponent({
     })
     return () => {
       const tabs = (
-        <div
-          role="tablist"
-          class="tabs-box tabs tabs-xs"
-        >
-          {tabsWithNumbers.value.map(({ type, count }) => {
-            return (
-              <a
-                role="tab"
-                key={type}
-                class={['tab', proxiesTabShow.value === type && 'tab-active']}
-                onClick={() => (proxiesTabShow.value = type)}
-              >
-                {t(type)} ({count})
-              </a>
-            )
-          })}
-        </div>
+        <SegmentedControl
+          modelValue={proxiesTabShow.value}
+          onUpdate:modelValue={(value) => (proxiesTabShow.value = value as PROXY_TAB_TYPE)}
+          options={tabsWithNumbers.value.map(({ type, count }) => ({
+            value: type,
+            label: t(type),
+            count,
+          }))}
+        />
       )
       const upgradeAllIcon = proxiesTabShow.value === PROXY_TAB_TYPE.PROVIDER && (
         <button

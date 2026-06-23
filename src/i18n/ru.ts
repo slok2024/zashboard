@@ -12,13 +12,11 @@ const ru: LANG_MESSAGE = {
   tailscale: 'Tailscale',
   terminal: 'Терминал',
 
-  // sing-box native API attachment
+  // Backend type
   default: 'По умолчанию',
-  singboxApiChannel: 'sing-box API',
-  clashApiChannel: 'Clash API',
-  enableSingboxApi: 'Включить нативный API sing-box',
-  enableSingboxApiTip:
-    'Clash API остается основным подключением. Нативный API используется только для инструментов sing-box, Tailscale и терминала.',
+  backendType: 'Тип бэкенда',
+  clashApi: 'Clash API',
+  singboxApi: 'sing-box API',
   singboxConnectionFailed: 'Не удалось подключиться к нативному API sing-box',
   skip: 'Пропустить',
   // Tools
@@ -149,6 +147,13 @@ const ru: LANG_MESSAGE = {
   destination: 'Разрешенный адрес',
   destinationType: 'Тип разрешения',
   inboundUser: 'Входящий пользователь',
+  outboundType: 'Тип исходящего',
+  fromOutbound: 'Из исходящего',
+  basic: 'Основное',
+  traffic: 'Трафик',
+  sourceAndDestination: 'Источник и назначение',
+  rawData: 'Исходные данные',
+  geoInfo: 'GeoIP',
   dl: 'Загр',
   ul: 'Отдч',
   dlSpeed: 'Загрузка',
@@ -433,6 +438,8 @@ const ru: LANG_MESSAGE = {
   showAllPreset: 'Показать все',
   minimalPreset: 'Минимальный вид',
   settingsPageTwoColumns: 'Двухколоночный режим',
+  moveUp: 'Вверх',
+  moveDown: 'Вниз',
   aggregateBy: 'Агрегация по',
   aggregateBySourceIP: 'По исходному IP',
   aggregateByDestination: 'По назначению',
